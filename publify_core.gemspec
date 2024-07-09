@@ -32,21 +32,21 @@ Gem::Specification.new do |s|
   s.add_dependency "html-pipeline", "~> 2.14"
   s.add_dependency "html-pipeline-hashtag", "~> 0.1.2"
   s.add_dependency "jquery-rails", ">= 4.5", "< 4.7"
-  s.add_dependency "jquery-ui-rails", "~> 6.0.1"
+  s.add_dependency "jquery-ui-rails", "~> 7.0"
   s.add_dependency "kaminari", ["~> 1.2", ">= 1.2.1"]
   s.add_dependency "marcel", "~> 1.0.0"
   s.add_dependency "mini_magick", ["~> 4.9", ">= 4.9.4"]
   # Force minimum nokogiri version to avoid security issues
   s.add_dependency "nokogiri", ">= 1.12.5"
   s.add_dependency "rack", ">= 2.2.3"
-  s.add_dependency "rails", "~> 6.1.4"
+  s.add_dependency "rails", ">= 6.1.4", "< 7.2.0"
   s.add_dependency "rails_autolink", "~> 1.1.0"
   s.add_dependency "rails-i18n", ">= 6.0", "< 7.1"
   s.add_dependency "rails-timeago", "~> 2.0"
   s.add_dependency "recaptcha", ["~> 5.0"]
   s.add_dependency "rubypants", "~> 0.7.0"
   s.add_dependency "sassc-rails", "~> 2.0"
-  s.add_dependency "twitter", ">= 7.0", "< 8.1"
+  s.add_dependency "twitter", ">= 7.0", "< 8.2"
   s.add_dependency "uuidtools", "~> 2.2.0"
 
   s.add_development_dependency "capybara", "~> 3.0"
@@ -58,7 +58,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rails-controller-testing", "~> 1.0.1"
   s.add_development_dependency "rspec-rails", "~> 6.0"
   s.add_development_dependency "rubocop", "~> 1.59.0"
-  s.add_development_dependency "rubocop-capybara", "~> 2.19.0"
+  s.add_development_dependency "rubocop-capybara", "~> 2.21.0"
   s.add_development_dependency "rubocop-factory_bot", "~> 2.24.0"
   s.add_development_dependency "rubocop-performance", "~> 1.20.0"
   s.add_development_dependency "rubocop-rails", "~> 2.23.0"
