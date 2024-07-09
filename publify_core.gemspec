@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 # Maintain your gem's version:
-require_relative "lib/hillheat_core/version"
+require_relative "lib/publify_core/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "hillheat_core"
-  s.version     = HillHeatCore::VERSION
+  s.name        = "publify_core"
+  s.version     = PublifyCore::VERSION
   s.authors     = ["Matijs van Zuijlen", "Yannick François",
-                   "Thomas Lecavellier", "Frédéric de Villamil","Brad Johnson"]
+                   "Thomas Lecavellier", "Frédéric de Villamil"]
   s.email       = ["matijs@matijs.net"]
   s.homepage    = "https://publify.github.io/"
-  s.summary     = "Core engine for the Publify blogging system, for Hill Heat."
+  s.summary     = "Core engine for the Publify blogging system."
   s.description = "Core engine for the Publify blogging system, formerly known as Typo."
   s.license     = "MIT"
 
