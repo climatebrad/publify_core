@@ -31,7 +31,11 @@ class User < ApplicationRecord
 
   has_many :articles
 
-  serialize :settings, type: Hash
+  if Rails.version.to_f >= 7.1
+    serialize :settings, type: Hash
+  else
+    serialize :settings, Hash
+  end
 
   STATUS = %w(active inactive).freeze
 
