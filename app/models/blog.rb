@@ -32,7 +32,11 @@ class Blog < ApplicationRecord
 
   validates :blog_name, presence: true
 
-  serialize :settings, Hash
+  if Rails.version.to_f >= 7.1
+    serialize :settings, type: Hash
+  else
+    serialize :settings, Hash
+  end
 
   # Description
   setting :blog_name, :string, "My Shiny Weblog!"

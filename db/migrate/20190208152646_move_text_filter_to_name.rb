@@ -19,8 +19,13 @@ class MoveTextFilterToName < ActiveRecord::Migration[5.2]
   end
 
   class TextFilter < ActiveRecord::Base
-    serialize :filters, Array
-    serialize :params, Hash
+    if Rails.version.to_f >= 7.1
+      serialize :filters, type: Array
+      serialize :params, type: Hash
+    else
+      serialize :filters, Array
+      serialize :params, Hash
+    end
   end
 
   def up

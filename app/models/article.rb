@@ -8,7 +8,11 @@ class Article < Content
   include PublifyGuid
   include ConfigManager
 
-  serialize :settings, Hash
+  if Rails.version.to_f >= 7.1
+    serialize :settings, type: Hash
+  else
+    serialize :settings, Hash
+  end
 
   content_fields :body, :extended
 
