@@ -21,4 +21,14 @@ class ContentController < BaseController
     end
     render xml: feed
   end
+
+  def verify_config
+    if !this_blog.configured?
+      redirect_to controller: "setup", action: "index"
+    elsif User.count == 0
+      redirect_to new_user_registration_path
+    else
+      true
+    end
+  end
 end
