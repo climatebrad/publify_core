@@ -29,7 +29,7 @@ function autosave_request(e) {
     typewatch(function() {
       $.ajax({
         type: "POST",
-        url: '/admin/content/autosave',
+        url: '/admin/articles/autosave',
         data: $("#article_form").serialize()});
     }, 5000)
   });
@@ -43,7 +43,7 @@ function tag_manager() {
   jQuery("#article_keywords").typeahead({
     name: 'tags',
     limit: 15,
-    prefetch: '/admin/content/auto_complete_for_article_keywords'
+    prefetch: '/admin/articles/auto_complete_for_article_keywords'
   }).on('typeahead:selected', function (e, d) {
     tagApi.tagsManager("pushTag", d.value);
   });
