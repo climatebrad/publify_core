@@ -184,7 +184,8 @@ class Admin::ArticlesController < Admin::BaseController
               :published_at,
               :text_filter_name,
               :title,
-              :keywords)
+              :keywords,
+              :post_type)
   end
 
   def default_text_filter
