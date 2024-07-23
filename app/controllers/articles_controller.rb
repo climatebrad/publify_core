@@ -99,6 +99,8 @@ class ArticlesController < ContentController
     # TODO: If linked to article, directly redirect to the article.
     # Let redirection made outside of the blog on purpose (deal with it, Brakeman!)
     redirect_to r.full_to_path, status: :moved_permanently if r
+    rescue ActiveRecord::RecordNotFound
+      error!
   end
 
   def archives
