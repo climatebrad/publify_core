@@ -101,14 +101,14 @@ class Admin::ArticlesController < Admin::BaseController
     return false unless request.xhr?
 
     id = params[:article][:id] || params[:id]
-    return if id && !access_granted?(id)
+    return if id.present? && !access_granted?(id)
 
     article_factory = Article::Factory.new(this_blog, current_user)
     @article = article_factory.get_or_build_from(id)
 
     fetch_fresh_or_existing_draft_for_article
 
-    @article.attributes = params[:article].permit!
+    @article.attributes = update_params
 
     @article.author = current_user
     @article.save_attachments!(params[:attachments])
@@ -184,7 +184,8 @@ class Admin::ArticlesController < Admin::BaseController
               :published_at,
               :text_filter_name,
               :title,
-              :keywords)
+              :keywords,
+              :post_type)
   end
 
   def default_text_filter
