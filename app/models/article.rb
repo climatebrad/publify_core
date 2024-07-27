@@ -5,6 +5,9 @@ require "uri"
 require "net/http"
 
 class Article < Content
+  WITHDRAWN = "withdrawn"
+  PUBLICATION_PENDING = "publication_pending"
+
   include PublifyGuid
   include ConfigManager
 
@@ -31,13 +34,13 @@ class Article < Content
 
   scope :child_of, ->(article_id) { where(parent_id: article_id) }
   scope :published_since, ->(time) { published.where("published_at > ?", time) }
-  scope :withdrawn, -> { where(state: "withdrawn").order(default_order) }
-  scope :pending, -> { where(state: "publication_pending").order(default_order) }
+  scope :withdrawn, -> { where(state: WITHDRAWN).order(default_order) }
+  scope :pending, -> { where(state: PUBLICATION_PENDING).order(default_order) }
 
   scope :bestof, lambda {
     joins(:feedback)
       .where("feedback.type" => "Comment",
-             "contents.state" => "published")
+             "contents.state" => PUBLISHED)
       .group("contents.id")
       .select("contents.*, count(feedback.id) as comment_count")
       .order("comment_count DESC")
@@ -116,7 +119,6 @@ class Article < Content
   # FIXME: Use keyword params to clean up call sites.
   def permalink_url(anchor = nil, only_path = false)
     return unless published?
-
     @cached_permalink_url ||= {}
     @cached_permalink_url["#{anchor}#{only_path}"] ||=
       blog.url_for(permalink_url_options, anchor: anchor, only_path: only_path)
@@ -158,7 +160,7 @@ class Article < Content
   end
 
   def self.publication_months
-    result = select("published_at").where.not(published_at: nil).where(type: "Article")
+    result = select("published_at").where.not(published_at: nil)
     result.map { |it| [it.publication_month] }.uniq
   end
 
