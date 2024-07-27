@@ -10,6 +10,8 @@
 //= require sidebar
 //= require spinnable
 //= require lightbox
+//= require strftime
+//= require publify_admin_edit_modal
 //
 //= require_self
 
@@ -63,12 +65,16 @@ function check_all(checkbox) {
   }
 }
 
+
 $(document).ready(function() {
-  $('#article_form').each(function(e){autosave_request(e)});
+// autosave is a good idea but doesn't work well
+//  $('#article_form').each(function(e){autosave_request(e)});
   $('#article_form').submit(function(e){save_article_tags()});
   $('#article_form').each(function(e){tag_manager()});
   $('#checkall').click(function(e){check_all(e.target)});
 
+// Dynamic edit modal functionality
+  initialize_edit_modal();
   // DropDown
   $(".dropdown-toggle").dropdown();
 });

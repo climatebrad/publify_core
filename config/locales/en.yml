@@ -50,6 +50,11 @@ en:
         publish: Publish
         publish_settings: Publish settings
         published: Published
+        published_status:
+          draft: Draft
+          publication_pending: Publication Pending
+          published: Published
+          withdrawn: Withdrawn
         save: Save
         save_as_draft: Save as draft
         status: Status

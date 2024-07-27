@@ -83,7 +83,7 @@
             <legend><%= t('.publish_settings') %></legend>
             <div class='control-group'>
               <p>
-              <%= t('.permalink') %>:
+              <%= t('.permalink') %>: <strong><% if @article.permalink.present? %><%= @article.permalink %><% end %></strong>
               <%= toggle_element('permalink') %>
               </p>
               <div id="permalink" class="collapse">
@@ -99,7 +99,7 @@
             </div>
             <div class="control-group">
               <p>
-              <%= t('.status') %>: <strong><%= @article.state.to_s.downcase %></strong>
+              <%= t('.status') %>: <strong><%= t(".published_status.#{@article.state}").downcase %></strong>
               <%= toggle_element('status') %>
               </p>
               <div id="status" class="collapse">
@@ -116,8 +116,10 @@
             </div>
             <div class="control-group">
               <p>
-              <%= t('.allowed_comments_html', allow_comment: content_tag(:strong, @article.allow_comments? ? t('.allow_comments_status.enabled') : t('.allow_comments_status.disabled'))) %>
-              <%= toggle_element('conversation') %>
+                <%= content_tag(:span, t('.allow_comments_status.enabled'), { id: 'conversation-on', style: 'display: none;' }) %>
+                <%= content_tag(:span, t('.allow_comments_status.disabled'), { id: 'conversation-off', style: 'display: none;' }) %>
+                <%= t('.allowed_comments_html', allow_comment: content_tag(:strong, @article.allow_comments? ? t('.allow_comments_status.enabled') : t('.allow_comments_status.disabled'))) %>
+                <%= toggle_element('conversation') %>
               </p>
               <div id="conversation" class="collapse">
                 <label for="article_allow_comments" class="checkbox">
@@ -133,6 +135,7 @@
             </div>
             <div class="control-group">
               <p>
+                <%= content_tag(:span, "#{this_blog.date_format} #{t("helper.at")} #{this_blog.time_format}", { id: 'datetime-format', style: 'display: none;' }) %>
               <%= t('.published') %>
               <strong>
                 <% if @article.published_at.present? %>
@@ -154,8 +157,10 @@
             </div>
             <div class="control-group">
               <p>
-              <%= t('.visibility') %>: <strong><%= @article.password.blank? ? t('.public') : t('.protected') %></strong>
-              <%= toggle_element('visibility') %>
+                <%= content_tag(:span, t('.public'), { id: 'visibility-on', style: 'display: none;' }) %>
+                <%= content_tag(:span, t('.protected'), { id: 'visibility-off', style: 'display: none;' }) %>
+                <%= t('.visibility') %>: <strong><%= @article.password.blank? ? t('.public') : t('.protected') %></strong>
+                <%= toggle_element('visibility') %>
               </p>
               <div id="visibility" class="collapse">
                 <label for="article_password"><%= t('.password') %></label>
@@ -178,7 +183,7 @@
                 </select>
                 <p>
                 <span class="btn btn-mini btn-default">
-                  <%= toggle_element 'text_filter', 'OK' %>
+                  <%= toggle_element 'text_filter', t('ok') %>
                 </span>
                 </p>
               </div>
