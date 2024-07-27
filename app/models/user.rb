@@ -126,7 +126,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    profile == User::ADMIN
+    profile == ADMIN
   end
 
   def update_twitter_profile_image(img)
@@ -143,6 +143,6 @@ class User < ApplicationRecord
   private
 
   def set_default_profile
-    self.profile ||= User.count.zero? ? "admin" : "contributor"
+    self.profile ||= User.count.zero? ? ADMIN : CONTRIBUTOR
   end
 end
