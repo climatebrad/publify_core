@@ -29,13 +29,13 @@ Gem::Specification.new do |s|
   s.add_dependency "devise_zxcvbn", "~> 6.0"
   s.add_dependency "fog-aws", "~> 3.2"
   s.add_dependency "fog-core", "~> 2.2"
-  s.add_dependency "html-pipeline", ">= 2.14, < 4.0"
+  s.add_dependency "html-pipeline", ">= 2.14", "< 4.0"
   s.add_dependency "html-pipeline-hashtag", "~> 0.1.2"
   s.add_dependency "jquery-rails", ">= 4.5", "< 4.7"
   s.add_dependency "jquery-ui-rails", "~> 7.0"
   s.add_dependency "kaminari", ["~> 1.2", ">= 1.2.1"]
   s.add_dependency "marcel", "~> 1.0.0"
-  s.add_dependency "mini_magick", ["~> 4.9", ">= 4.9.4"]
+  s.add_dependency "mini_magick", ">= 4.9.4", "< 6.0"
   # Force minimum nokogiri version to avoid security issues
   s.add_dependency "nokogiri", ">= 1.12.5"
   s.add_dependency "rack", ">= 2.2.3"
@@ -59,8 +59,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails", "~> 6.0"
   s.add_development_dependency "rubocop", "~> 1.59.0"
   s.add_development_dependency "rubocop-capybara", "~> 2.21.0"
-  s.add_development_dependency "rubocop-factory_bot", "~> 2.24.0"
-  s.add_development_dependency "rubocop-performance", "~> 1.20.0"
+  s.add_development_dependency "rubocop-factory_bot", "~> 2.26.0"
+  s.add_development_dependency "rubocop-performance", "~> 1.21.1"
   s.add_development_dependency "rubocop-rails", "~> 2.23.0"
   s.add_development_dependency "rubocop-rspec", "~> 3.0.0"
   s.add_development_dependency "shoulda-matchers", "~> 6.0"
