@@ -3,4 +3,7 @@
 
 require_relative "config/application"
 
+puts "Rails.env: #{Rails.env.inspect}"
+puts "Database configurations: #{Rails.application.config.database_configuration.inspect}"
+
 Rails.application.load_tasks

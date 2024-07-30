@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  byebug
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   # TODO: use only in archive sidebar. See how made other system
