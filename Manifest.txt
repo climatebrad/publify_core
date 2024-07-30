@@ -43,10 +43,12 @@ app/assets/javascripts/optional_field_toggle.js
 app/assets/javascripts/preview_comment.js
 app/assets/javascripts/publify.js
 app/assets/javascripts/publify_admin.js
+app/assets/javascripts/publify_admin_edit_modal.js
 app/assets/javascripts/quicktags.js
 app/assets/javascripts/set-timeago-lang.js
 app/assets/javascripts/sidebar.js
 app/assets/javascripts/spinnable.js
+app/assets/javascripts/strftime.js
 app/assets/javascripts/tagmanager.js
 app/assets/javascripts/typeahead.js
 app/assets/stylesheets/_bootstrap-compass.scss
