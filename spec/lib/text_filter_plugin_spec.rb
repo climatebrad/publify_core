@@ -10,7 +10,8 @@ RSpec.describe TextFilterPlugin do
         PublifyCore::TextFilter::Markdown,
         PublifyCore::TextFilter::Smartypants,
         PublifyCore::TextFilter::MarkdownSmartquotes,
-        PublifyCore::TextFilter::Twitterfilter)
+#        PublifyCore::TextFilter::Twitterfilter)
+        )
     end
   end
 

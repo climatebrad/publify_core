@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Note < Content
-  require "twitter"
+  require "x"
   require "json"
   require "uri"
   include PublifyGuid
@@ -48,7 +48,7 @@ class Note < Content
   end
 
   def html_postprocess(field, html)
-    super(field, PublifyCore::TextFilter::Twitterfilter.filtertext(html))
+    super(field, PublifyCore::TextFilterw.filtertext(html))
   end
 
   def truncate(message, length)
@@ -78,7 +78,7 @@ class Note < Content
     return false unless blog.has_twitter_configured?
     return false unless user.has_twitter_configured?
 
-    twitter = Twitter::REST::Client.new do |config|
+    twitter = X::Client.new do |config|
       config.consumer_key = blog.twitter_consumer_key
       config.consumer_secret = blog.twitter_consumer_secret
       config.access_token = user.twitter_oauth_token
