@@ -44,7 +44,7 @@ class TextFilter
       if f.help_text.blank?
         ""
       else
-        "<h3>#{f.display_name}</h3>\n#{Commonmarker.to_html(f.help_text, :DEFAULT)}"
+        "<h3>#{f.display_name}</h3>\n#{Commonmarker.to_html(f.help_text)}"
       end
     end
 
