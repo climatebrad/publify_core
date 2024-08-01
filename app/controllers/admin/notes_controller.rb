@@ -11,10 +11,10 @@ class Admin::NotesController < Admin::BaseController
   end
 
   def show
-    unless @note.access_by?(current_user)
-      flash[:error] = I18n.t("admin.base.not_allowed")
-      redirect_to admin_notes_url
-    end
+    return if @note.access_by?(current_user)
+
+    flash[:error] = I18n.t("admin.base.not_allowed")
+    redirect_to admin_notes_url
   end
 
   def edit; end
@@ -27,11 +27,9 @@ class Admin::NotesController < Admin::BaseController
     note.text_filter ||= default_text_filter
     note.published_at ||= Time.zone.now
     if note.save
-      if params[:push_to_twitter] && note.twitter_id.blank?
-        unless note.send_to_twitter
-          flash[:error] = I18n.t("errors.problem_sending_to_twitter")
-          flash[:error] += " : #{note.errors.full_messages.join(" ")}"
-        end
+      if params[:push_to_twitter] && note.twitter_id.blank? && !note.send_to_twitter
+        flash[:error] = I18n.t("errors.problem_sending_to_twitter")
+        flash[:error] += " : #{note.errors.full_messages.join(" ")}"
       end
       flash[:notice] = I18n.t("notice.note_successfully_created")
     else

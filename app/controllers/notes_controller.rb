@@ -10,19 +10,19 @@ class NotesController < ContentController
   def index
     @notes = Note.published.page(params[:page]).per(this_blog.limit_article_display)
 
-    if @notes.empty?
-      @message = I18n.t("errors.no_notes_found")
-      render "notes/error", status: :ok
-    end
+    return unless @notes.empty?
+
+    @message = I18n.t("errors.no_notes_found")
+    render "notes/error", status: :ok
   end
 
   def show
     @note = Note.published.find_by! permalink: CGI.escape(params[:permalink])
 
-    if @note.in_reply_to_message.present?
-      @reply = JSON.parse(@note.in_reply_to_message)
-      render :show_in_reply
-    end
+    return unless @note.in_reply_to_message.present?
+
+    @reply = JSON.parse(@note.in_reply_to_message)
+    render :show_in_reply
   end
 
   private

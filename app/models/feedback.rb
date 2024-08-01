@@ -45,7 +45,7 @@ class Feedback < ApplicationRecord
     state :ham, after_enter: [:send_notifications, :report_as_ham]
 
     event :presume_ham do
-      transitions from: :unclassified, to: :ham, if: ->() { user_id.present? }
+      transitions from: :unclassified, to: :ham, if: -> { user_id.present? }
       transitions from: :unclassified, to: :presumed_ham
     end
 

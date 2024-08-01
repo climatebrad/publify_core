@@ -8,10 +8,10 @@ class Trackback < Feedback
   before_create :process_trackback
 
   def process_trackback
-    if excerpt.length >= 251
-      # this limits excerpt to 250 chars, including the trailing "..."
-      self.excerpt = excerpt[0..246] << "..."
-    end
+    return unless excerpt.length >= 251
+
+    # this limits excerpt to 250 chars, including the trailing "..."
+    self.excerpt = excerpt[0..246] << "..."
   end
 
   def originator

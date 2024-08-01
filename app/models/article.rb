@@ -108,7 +108,7 @@ class Article < Content
 
   def self.search_with(params)
     params ||= {}
-    scoped = super(params)
+    scoped = super
     if %w(no_draft drafts published withdrawn pending).include?(params[:state])
       scoped = scoped.send(params[:state])
     end
@@ -119,6 +119,7 @@ class Article < Content
   # FIXME: Use keyword params to clean up call sites.
   def permalink_url(anchor = nil, only_path = false)
     return unless published?
+
     @cached_permalink_url ||= {}
     @cached_permalink_url["#{anchor}#{only_path}"] ||=
       blog.url_for(permalink_url_options, anchor: anchor, only_path: only_path)
@@ -178,10 +179,10 @@ class Article < Content
     article = published.find_by(req_params)
     return article if article
 
-    if params[:title]
-      req_params[:permalink] = CGI.escape(params[:title])
-      published.find_by(req_params)
-    end
+    return unless params[:title]
+
+    req_params[:permalink] = CGI.escape(params[:title])
+    published.find_by(req_params)
   end
 
   # Fulltext searches the body of published articles

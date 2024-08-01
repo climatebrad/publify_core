@@ -75,11 +75,9 @@ class TextFilterPlugin
   # The name that needs to be used when refering to the plugin's
   # controller in render statements
   def self.component_name
-    if to_s =~ /::([a-zA-Z]+)$/
-      "plugins/textfilters/#{Regexp.last_match[1]}".downcase
-    else
-      raise "I don't know who I am: #{self}"
-    end
+    raise "I don't know who I am: #{self}" unless to_s =~ /::([a-zA-Z]+)$/
+
+    "plugins/textfilters/#{Regexp.last_match[1]}".downcase
   end
 
   # The name that's stored in the DB.  This is the final chunk of the

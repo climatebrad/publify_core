@@ -20,14 +20,12 @@ class TagsController < ContentController
 
     respond_to do |format|
       format.html do
-        if @articles.empty?
-          raise ActiveRecord::RecordNotFound
-        else
-          @page_title = this_blog.tag_title_template.to_title(@tag, this_blog, params).strip
-          @description = this_blog.tag_desc_template.to_title(@tag, this_blog, params).strip
-          @keywords = this_blog.meta_keywords
-          render template_name(params[:id])
-        end
+        raise ActiveRecord::RecordNotFound if @articles.empty?
+
+        @page_title = this_blog.tag_title_template.to_title(@tag, this_blog, params).strip
+        @description = this_blog.tag_desc_template.to_title(@tag, this_blog, params).strip
+        @keywords = this_blog.meta_keywords
+        render template_name(params[:id])
       end
 
       format.atom do

@@ -73,7 +73,7 @@ module ContentBase
 
   module ClassMethods
     def content_fields(*attribs)
-      class_eval "def content_fields; #{attribs.inspect}; end"
+      class_eval "def content_fields; #{attribs.inspect}; end", __FILE__, __LINE__
     end
 
     def default_order

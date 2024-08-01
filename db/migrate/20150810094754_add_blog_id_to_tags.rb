@@ -5,10 +5,10 @@ class AddBlogIdToTags < ActiveRecord::Migration[4.2]
 
   def up
     add_column :tags, :blog_id, :integer
-    if Tag.any?
-      default_blog_id = Blog.order(:id).first.id
-      Tag.update_all("blog_id = #{default_blog_id}")
-    end
+    return unless Tag.any?
+
+    default_blog_id = Blog.order(:id).first.id
+    Tag.update_all("blog_id = #{default_blog_id}")
   end
 
   def down

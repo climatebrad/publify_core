@@ -12,7 +12,7 @@ class Sidebar < ApplicationRecord
 
   belongs_to :blog
 
-  scope :valid, ->() { where(type: SidebarRegistry.available_sidebar_types) }
+  scope :valid, -> { where(type: SidebarRegistry.available_sidebar_types) }
 
   def self.ordered_sidebars
     os = []

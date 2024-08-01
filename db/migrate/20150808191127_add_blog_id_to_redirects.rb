@@ -5,10 +5,10 @@ class AddBlogIdToRedirects < ActiveRecord::Migration[4.2]
 
   def up
     add_column :redirects, :blog_id, :integer
-    if Redirect.any?
-      default_blog_id = Blog.order(:id).first.id
-      Redirect.update_all("blog_id = #{default_blog_id}")
-    end
+    return unless Redirect.any?
+
+    default_blog_id = Blog.order(:id).first.id
+    Redirect.update_all("blog_id = #{default_blog_id}")
   end
 
   def down

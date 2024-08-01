@@ -120,15 +120,15 @@ class Admin::ArticlesController < Admin::BaseController
       @article.title = "Draft article #{lastid}"
     end
 
-    if @article.save
-      flash[:success] = I18n.t("admin.articles.autosave.success")
-      @must_update_calendar =
-        params[:article][:published_at] and
-        params[:article][:published_at].to_time.to_i < Time.zone.now.to_time.to_i and
-        @article.parent_id.nil?
-      respond_to do |format|
-        format.js
-      end
+    return unless @article.save
+
+    flash[:success] = I18n.t("admin.articles.autosave.success")
+    @must_update_calendar =
+      params[:article][:published_at] and
+      params[:article][:published_at].to_time.to_i < Time.zone.now.to_time.to_i and
+      @article.parent_id.nil?
+    respond_to do |format|
+      format.js
     end
   end
 

@@ -19,10 +19,10 @@ class Admin::FeedbackController < Admin::BaseController
   def edit
     @comment = Comment.find(params[:id])
     @article = @comment.article
-    unless @article.access_by? current_user
-      redirect_to admin_feedback_index_url
-      nil
-    end
+    return if @article.access_by? current_user
+
+    redirect_to admin_feedback_index_url
+    nil
   end
 
   def create
@@ -58,8 +58,8 @@ class Admin::FeedbackController < Admin::BaseController
   def destroy
     @record = Feedback.find params[:id]
 
-    unless @record.article.user_id == current_user.id
-      return redirect_to admin_feedback_index_url unless current_user.admin?
+    if !(@record.article.user_id == current_user.id) && !current_user.admin?
+      return redirect_to admin_feedback_index_url
     end
 
     begin

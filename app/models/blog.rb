@@ -17,14 +17,14 @@ class Blog < ApplicationRecord
   has_many :articles
   has_many :feedback, through: :articles
 
-  has_many :published_articles, ->() { published }, class_name: "Article"
+  has_many :published_articles, -> { published }, class_name: "Article"
 
   has_many :pages
   has_many :tags
   has_many :notes
 
   has_many :redirects
-  has_many :sidebars, ->() { order("active_position ASC") }
+  has_many :sidebars, -> { order("active_position ASC") }
 
   attr_accessor :custom_permalink
 
@@ -262,7 +262,7 @@ class Blog < ApplicationRecord
   end
 
   def shortener_url
-    custom_url_shortener.present? ? custom_url_shortener : base_url
+    custom_url_shortener.presence || base_url
   end
 
   private

@@ -46,8 +46,8 @@ Gem::Specification.new do |s|
   s.add_dependency "recaptcha", ["~> 5.0"]
   s.add_dependency "rubypants", "~> 0.7.0"
   s.add_dependency "sassc-rails", "~> 2.0"
-  s.add_dependency "x"
   s.add_dependency "uuidtools", "~> 2.2.0"
+  s.add_dependency "x"
 
   s.add_development_dependency "capybara", "~> 3.0"
   s.add_development_dependency "erb_lint", "~> 0.5.0"
@@ -58,12 +58,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rails-controller-testing", "~> 1.0.1"
   s.add_development_dependency "rspec-rails", "~> 6.0"
   s.add_development_dependency "rubocop", "~> 1.65"
-# These all should be pulled in by .rubocop.yml based on the rubocop version
-#  s.add_development_dependency "rubocop-capybara", "~> 2.21.0"
-#  s.add_development_dependency "rubocop-factory_bot", "~> 2.26.0"
-#  s.add_development_dependency "rubocop-performance", "~> 1.21.1"
-#  s.add_development_dependency "rubocop-rails", "~> 2.23.0"
-#  s.add_development_dependency "rubocop-rspec", "~> 3.0.0"
+  # These all should be pulled in by .rubocop.yml based on the rubocop version
+  #  s.add_development_dependency "rubocop-capybara", "~> 2.21.0"
+  #  s.add_development_dependency "rubocop-factory_bot", "~> 2.26.0"
+  #  s.add_development_dependency "rubocop-performance", "~> 1.21.1"
+  #  s.add_development_dependency "rubocop-rails", "~> 2.23.0"
+  #  s.add_development_dependency "rubocop-rspec", "~> 3.0.0"
   s.add_development_dependency "shoulda-matchers", "~> 6.0"
   s.add_development_dependency "simplecov", "~> 0.22.0"
   s.add_development_dependency "sqlite3", "~> 2.0"

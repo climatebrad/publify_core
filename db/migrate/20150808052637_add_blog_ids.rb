@@ -29,7 +29,7 @@ class AddBlogIds < ActiveRecord::Migration[4.2]
     else
       begin
         remove_index :contents, :blog_id
-      rescue
+      rescue StandardError
         nil
       end
     end

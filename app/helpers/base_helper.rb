@@ -16,7 +16,7 @@ module BaseHelper
       render_sidebar(sb)
     end
     safe_join rendered_sidebars
-  rescue => e
+  rescue StandardError => e
     logger.error e
     logger.error e.backtrace.join("\n")
     I18n.t("errors.render_sidebar")
@@ -207,7 +207,7 @@ module BaseHelper
   def get_reply_context_url(reply)
     link_to(reply["user"]["name"],
             reply["user"]["entities"]["url"]["urls"][0]["expanded_url"])
-  rescue
+  rescue StandardError
     link_to(reply["user"]["name"], "https://twitter.com/#{reply["user"]["name"]}")
   end
 

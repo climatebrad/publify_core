@@ -35,11 +35,11 @@ module ConfigManager
         raw_value = settings[item.name]
         raw_value.nil? ? item.default : raw_value
       end
-      if item.ruby_type == :boolean
-        send(:define_method, "#{item.name}?") do
-          raw_value = settings[item.name]
-          raw_value.nil? ? item.default : raw_value
-        end
+      return unless item.ruby_type == :boolean
+
+      send(:define_method, "#{item.name}?") do
+        raw_value = settings[item.name]
+        raw_value.nil? ? item.default : raw_value
       end
     end
 
