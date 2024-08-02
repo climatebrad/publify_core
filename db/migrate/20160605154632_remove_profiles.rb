@@ -2,7 +2,11 @@
 
 class RemoveProfiles < ActiveRecord::Migration[4.2]
   class Profile < ActiveRecord::Base
-    serialize :modules
+    if Rails.version.to_f >= 7.1
+      serialize :modules, coder: YAML
+    else
+      serialize :modules
+    end
   end
 
   def up

@@ -32,7 +32,7 @@ class User < ApplicationRecord
   has_many :articles
 
   if Rails.version.to_f >= 7.1
-    serialize :settings, type: Hash
+    serialize :settings, coder: YAML, type: Hash
   else
     serialize :settings, Hash
   end

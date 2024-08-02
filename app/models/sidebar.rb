@@ -5,7 +5,7 @@ require "sidebar_field"
 # This class cannot be autoloaded since other sidebar classes depend on it.
 class Sidebar < ApplicationRecord
   if Rails.version.to_f >= 7.1
-    serialize :config, type: Hash
+    serialize :config, coder: YAML, type: Hash
   else
     serialize :config, Hash
   end

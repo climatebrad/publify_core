@@ -40,9 +40,13 @@ class Content < ApplicationRecord
 
   scope :published_at_like, lambda { |date_at|
                               where(published_at: PublifyTime.delta_like(date_at))
-                            }
+  }
 
-  serialize :whiteboard
+  if Rails.version.to_f >= 7.1
+    serialize :whiteboard, coder: YAML
+  else
+    serialize :whiteboard
+  end
 
   validates_default_string_length :title, :author, :permalink, :name,
                                   :post_type, :text_filter_name
