@@ -9,6 +9,7 @@
     <meta http-equiv="imagetoolbar" content="no">
     <%= javascript_include_tag 'publify_admin', async: Rails.env.production? %>
     <%= stylesheet_link_tag 'accounts' %>
+    <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="container">
