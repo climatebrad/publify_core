@@ -70,13 +70,13 @@ class Article < Content
         self.published_at ||= Time.zone.now
       end
 
-      transitions from: [:new, :draft], to: :publication_pending do
+      transitions from: [:new, :draft, :withdrawn], to: :publication_pending do
         guard do
           published_at > Time.zone.now
         end
       end
 
-      transitions from: [:new, :draft, :publication_pending], to: :published do
+      transitions from: [:new, :draft, :withdrawn, :publication_pending], to: :published do
         guard do
           published_at <= Time.zone.now
         end
@@ -84,6 +84,10 @@ class Article < Content
     end
   end
 
+  def publish?
+    published? || publication_pending?
+  end
+  
   def set_permalink
     return if draft? || permalink.present?
 
