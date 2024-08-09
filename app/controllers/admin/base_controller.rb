@@ -22,7 +22,7 @@ class Admin::BaseController < BaseController
     end
     @record.destroy
     flash[:notice] = I18n.t("admin.base.successfully_deleted",
-                            name: controller_name.humanize)
+                            name: controller_name.singularize.humanize)
     redirect_to action: "index"
   end
 
