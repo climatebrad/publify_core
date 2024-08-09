@@ -8,6 +8,7 @@
 <% for article in @articles %>
   <tr>
     <td>
+      <span class="status-indicator status-<%= article.state %>"></span>
       <% if article.published? %>
         <%= link_to_permalink(article, article.title, style: 'published') %>
       <% else %>

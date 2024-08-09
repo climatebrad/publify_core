@@ -26,6 +26,33 @@ tr .action {
   margin-top: 5px;
 }
 
+/* Article listing */
+
+.status-published {
+  @extend .label-success;
+}
+
+.status-withdrawn {
+  @extend .label-danger;
+}
+
+.status-draft {
+  @extend .label-info;
+}
+
+.status-publication_pending {
+  @extend .label-warning;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 5  px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
 /* Editor */
 #editor {
   float: left;
@@ -191,5 +218,5 @@ twitter-typeahead {
 
 .tt-hint {
   z-index: -1;
-  
+
 }
