@@ -52,7 +52,7 @@ module Admin::BaseHelper
 
   def button_to_edit(item)
     link_to(t("generic.edit"),
-            { action: "edit", id: item.id },
+            [:edit, :admin, item],
             { class: "btn btn-primary btn-xs btn-action" })
   end
 
@@ -60,7 +60,7 @@ module Admin::BaseHelper
     confirm_text = t("admin.shared.destroy.are_you_sure",
                      element: item.class.model_name.human.downcase)
     link_to(t("generic.delete"),
-            { action: "destroy", id: item.id },
+            [:admin, item],
             { class: "btn btn-danger btn-xs btn-action", method: :delete,
               data: { confirm: confirm_text } })
   end
