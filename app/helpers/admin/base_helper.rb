@@ -60,7 +60,7 @@ module Admin::BaseHelper
     confirm_text = t("admin.shared.destroy.are_you_sure",
                      element: item.class.model_name.human.downcase)
     link_to(t("generic.delete"),
-            [:admin, item],
+            [:admin, item, item.id],
             { class: "btn btn-danger btn-xs btn-action",
               data: { turbo_method: :delete, turbo_confirm: confirm_text } })
   end
