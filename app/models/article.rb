@@ -67,18 +67,18 @@ class Article < Content
 
     event :publish do
       before do
-        self.published_at ||= Time.zone.now
+        published_at = Time.zone.now if published_at.blank?
       end
 
       transitions from: [:new, :draft, :withdrawn], to: :publication_pending do
         guard do
-          self.published_at > Time.zone.now
+          published_at > Time.zone.now
         end
       end
 
       transitions from: [:new, :draft, :withdrawn, :publication_pending], to: :published do
         guard do
-          self.published_at <= Time.zone.now
+          published_at <= Time.zone.now
         end
       end
     end
