@@ -7,7 +7,7 @@ module Admin; end
 class Admin::ArticlesController < Admin::BaseController
   def index
     @search = params[:search] || {}
-    @articles = this_blog.articles.search_with(@search).page(params[:page])
+    @articles = this_blog.articles.strict_loading.search_with(@search).page(params[:page])
       .per(this_blog.admin_display_elements)
 
     if request.xhr?
@@ -63,6 +63,7 @@ class Admin::ArticlesController < Admin::BaseController
 
     @article = Article.find(id)
 
+    # "Save as draft" button
     if params[:article][:draft]
       fetch_fresh_or_existing_draft_for_article
     else
@@ -73,8 +74,15 @@ class Admin::ArticlesController < Admin::BaseController
 
     if @article.draft
       @article.state = "draft"
-    elsif @article.draft?
-      @article.publish!
+    else
+      case params[:submit_action]
+      when "publish"
+        # Publish
+        @article.publish! if @article.may_publish?
+      when "withdraw"
+        # Withdraw
+        @article.withdraw! if @article.may_withdraw?
+      end
     end
 
     if @article.save

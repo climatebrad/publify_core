@@ -64,6 +64,7 @@ en:
         title: Title
         type_your_post: Type your post
         visibility: Visibility
+        withdraw: Withdraw
       index:
         actions: Actions
         all_articles: All articles
