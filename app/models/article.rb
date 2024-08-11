@@ -87,7 +87,7 @@ class Article < Content
   def publish?
     published? || publication_pending?
   end
-  
+
   def set_permalink
     return if draft? || permalink.present?
 

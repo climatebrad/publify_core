@@ -34,6 +34,7 @@ module ContentBase
   # object.
   def generate_html(field, text = nil)
     text ||= self[field].to_s
+    text = text.encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
     html = (text_filter || default_text_filter).filter_text(text) || text
     html_postprocess(field, html).to_s
   end
