@@ -9,7 +9,8 @@ class Redirect < ApplicationRecord
   validates :from_path, uniqueness: true
   validates :to_path, presence: true
 
-  validates_default_string_length :from_path, :to_path
+  validates_default_string_length :from_path
+  validates :to_path, length: { maximum: 2000 }
 
   def full_to_path
     path = to_path
