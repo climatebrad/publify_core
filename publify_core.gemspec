@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
   s.add_dependency "x"
 
   s.add_development_dependency "capybara", "~> 3.0"
-  s.add_development_dependency "erb_lint", "~> 0.5.0"
+  s.add_development_dependency "erb_lint", "~> 0.7.0"
   s.add_development_dependency "factory_bot", "~> 6.2"
   s.add_development_dependency "feedjira", "~> 3.2"
   s.add_development_dependency "i18n-tasks", "~> 1.0.12"
