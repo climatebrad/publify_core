@@ -27,7 +27,6 @@ class UpgradeIdsToBigints < ActiveRecord::Migration[7.2]
     change_column :resources, :content_id, :bigint
     change_column :resources, :blog_id, :bigint
 
-    change_column :sessions, :id, :bigint
 
     change_column :sidebars, :id, :bigint
     change_column :sidebars, :blog_id, :bigint
@@ -68,8 +67,6 @@ class UpgradeIdsToBigints < ActiveRecord::Migration[7.2]
     change_column :resources, :id, :integer
     change_column :resources, :content_id, :integer
     change_column :resources, :blog_id, :integer
-
-    change_column :sessions, :id, :integer
 
     change_column :sidebars, :id, :integer
     change_column :sidebars, :blog_id, :integer
