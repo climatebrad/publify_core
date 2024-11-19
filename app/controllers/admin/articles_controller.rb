@@ -49,7 +49,7 @@ class Admin::ArticlesController < Admin::BaseController
 
     if @article.save
       flash[:success] = I18n.t("admin.articles.create.success")
-      redirect_to action: "index"
+      redirect_to action: "edit", id: @article.id
     else
       @article.keywords = Tag.collection_to_string @article.tags
       load_resources
@@ -88,7 +88,7 @@ class Admin::ArticlesController < Admin::BaseController
     if @article.save
       Article.where(parent_id: @article.id).map(&:destroy) unless @article.draft
       flash[:success] = I18n.t("admin.articles.update.success")
-      redirect_to action: "index"
+      redirect_to action: "edit", id: @article.id
     else
       @article.keywords = Tag.collection_to_string @article.tags
       load_resources
