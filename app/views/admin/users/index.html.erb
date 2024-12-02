@@ -25,7 +25,7 @@
           <%= button_to_edit user %>
         </div>
       </td>
-      <td><%= user.nickname %></td>
+      <td><%= user.name %></td>
       <td><%= mail_to user.email, user.email %></td>
       <td><%= t("profile.#{user.profile}") %></td>
       <td><%= Article.where("user_id = #{user.id}").count %></td>
