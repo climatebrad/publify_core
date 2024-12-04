@@ -44,6 +44,7 @@ class Blog < ApplicationRecord
   setting :geourl_location, :string, ""
   setting :canonical_server_url, :string, "" # Deprecated
   setting :lang, :string, "en_US"
+  setting :icon, :string, ""
 
   # Spam
   setting :sp_global, :boolean, false
