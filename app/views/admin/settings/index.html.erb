@@ -27,6 +27,17 @@
       </div>
     </div>
     <div class='form-group'>
+      <label class='control-label col-sm-4 col-md-3 col-lg-2' for="setting_icon"><%= t('.icon') %></label>
+      <div class='col-sm-8 col-md-6 col-lg-4'>
+				<% if this_blog.icon.present? %>
+      		<img src="<%= this_blog.icon %>" alt="Blog Icon" style="max-width: 100px; max-height: 100px;">
+				<% else %>
+					<img src="/favicon.ico"  alt="Blog Icon" style="max-width: 100px; max-height: 100px;">
+				<% end %>
+					<%= text_field(:setting, :icon, class: 'form-control') %>
+      </div>
+    </div>
+    <div class='form-group'>
       <label class='control-label col-sm-4 col-md-3 col-lg-2' for="setting_lang"><%= t('.language') %></label>
       <div class='col-sm-8 col-md-6 col-lg-4'>
         <select name="setting[lang]" id='setting_lang' class='form-control'>

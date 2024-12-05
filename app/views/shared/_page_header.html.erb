@@ -4,6 +4,10 @@
 <%= meta_tag 'robots', 'noindex, follow' if stop_index_robots?(this_blog) %>
 <%= meta_tag 'google-site-verification', this_blog.google_verification if this_blog.google_verification.present? %>
 <meta name="generator" content="Publify <%= PublifyCore::VERSION %>">
+<% if this_blog.icon.present? %>
+  <link as="image" href="<%= this_blog.icon %>" rel="icon">
+  <link rel="apple-touch-icon" href="<%= this_blog.icon %>">
+<% end %>
 <%= show_meta_keyword %>
 <% if feed_atom %>
   <link rel="alternate" type="application/atom+xml" title="Atom" href="<%= feed_atom %>">
