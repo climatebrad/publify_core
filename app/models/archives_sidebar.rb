@@ -26,7 +26,11 @@ class ArchivesSidebar < Sidebar
     # DB-specific code.
     date_funcs = self.class.date_funcs
 
+    # count needs to match the output of articles#index
+    wanted_types = blog.statuses_in_timeline ? ["Article", "Note"] : ["Article"]
+
     article_counts = Article.published.select("count(*) as count", *date_funcs)
+      .where(type: wanted_types)
       .group(:year, :month).reorder("year desc", "month desc").limit(count.to_i)
 
     @archives = article_counts.map do |entry|
